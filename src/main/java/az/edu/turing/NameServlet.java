@@ -10,12 +10,17 @@ public class NameServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/plain");
-        resp.setCharacterEncoding("UTF-8");
-        String name = req.getParameter("Name");
-        if (name == null) {
-            name = "Java EE";
+        try {
+            resp.setContentType("text/plain");
+            resp.setCharacterEncoding("UTF-8");
+            String name = req.getParameter("Name");
+            if (name == null) {
+                name = "Java EE";
+            }
+            resp.getWriter().println("Hello, " + name);
+        } catch (IOException e) {
+            System.out.println("Error occurred in /greetings");
         }
-        resp.getWriter().println("Hello, " + name);
+
     }
 }

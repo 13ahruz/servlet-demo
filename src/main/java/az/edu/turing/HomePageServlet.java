@@ -10,8 +10,12 @@ public class HomePageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/plane");
-        resp.setCharacterEncoding("UTF-8");
-        resp.getWriter().println("Hello World");
+        try {
+            resp.setContentType("text/plane");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().println("Hello World");
+        } catch (IOException e) {
+            System.out.println("Error occurred in /");
+        }
     }
 }
