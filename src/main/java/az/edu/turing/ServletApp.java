@@ -5,7 +5,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 public class ServletApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Server server = new Server(9000);
         ServletContextHandler handler = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -17,11 +17,7 @@ public class ServletApp {
 
         server.setHandler(handler);
 
-        try {
-            server.start();
-            server.join();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        server.start();
+        server.join();
     }
 }
